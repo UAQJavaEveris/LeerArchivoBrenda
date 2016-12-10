@@ -28,7 +28,16 @@ public class Archivo {
             System.out.println("Es un directorio");
         }else{
             System.out.println("Es un archivo");
-            if(archivo.exists()) {
+            escribir();
+            bw.close();
+            muestraContenido(ruta);
+        }
+
+       
+    }
+    public static void escribir() throws IOException{
+
+        if(archivo.exists()) {
                     System.out.println("Ya existia el archivo");
                     bw = new BufferedWriter(new FileWriter(archivo));
                     System.out.println("Escribe algo..");
@@ -43,11 +52,6 @@ public class Archivo {
                     cadena = lector.readLine();
                     bw.write(cadena);
             }
-            bw.close();
-            muestraContenido(ruta);
-        }
-
-       
     }
     public static void muestraContenido(String archivo) throws FileNotFoundException, IOException {
       String cadena;
